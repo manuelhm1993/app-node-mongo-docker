@@ -1,0 +1,17 @@
+# Este archivo define la configuración de docker para automatizar la creación de un entorno de desarrollo
+version: "3.9"
+services:
+  # Esta identación es importante, luego se definen los contenedores
+  mhcontainerapp:
+    build: . # Construye la imagen a partir del Dockerfile en el directorio actual
+    ports:
+      - "3000:3000" # Mapeo de puertos, el primero es el del host y el segundo es del contenedor
+    links:
+      - mhcontainer # Establece un enlace entre el contenedor de la app y el contenedor de la db
+  mhcontainer:
+    image: mongo # Al igual que los contenedores, las imagenes no se definen con comillas
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mhenriquez # Variables de entorno para inicializar la base de datos
+      - MONGO_INITDB_ROOT_PASSWORD=123456
