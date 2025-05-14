@@ -11,8 +11,9 @@ const Animal = mongoose.model(
 
 const app = express();
 
+// Se cambió localhost por el nombre del contenedor
 mongoose.connect(
-    "mongodb://mhenriquez:123456@localhost:27017/miapp?authSource=admin"
+    "mongodb://mhenriquez:123456@primer-app-docker:27017/miapp?authSource=admin"
 );
 
 app.get("/", async (_req, res) => {
