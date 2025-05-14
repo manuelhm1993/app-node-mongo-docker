@@ -15,3 +15,11 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mhenriquez # Variables de entorno para inicializar la base de datos
       - MONGO_INITDB_ROOT_PASSWORD=123456
+    volumes: # Infica al contenedor cuáles son los volúmenes que va a usar
+      - mongo-data:/data/db 
+      # mysql-data:/var/lib/mysql
+      # postgres-data:/var/lib/postgresql/data
+      # sqlserver-data:/var/opt/mssql
+      # sqlite-data:/data/db
+volumes: # Define los volúmenes que van a usar los contenedores
+  mongo-data:
