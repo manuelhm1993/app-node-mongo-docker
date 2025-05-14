@@ -1,8 +1,9 @@
 # Toda imagen creada se basa en otra imagen
-FROM node:18 
+FROM node:22
 
 # Se establece el directorio de trabajo dentro del contenedor
-RUN mkdir -p /home/app
+# RUN mkdir -p /home/app
+WORKDIR /home/app
 
 # Se establece de donde se va a copiar el código (SO anfitrión)
 COPY . /home/app

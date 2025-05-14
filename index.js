@@ -11,9 +11,9 @@ const Animal = mongoose.model(
 
 const app = express();
 
-// Se cambió localhost por el nombre del contenedor
+// Se cambió localhost por el nombre del contenedor && luego del / se agregó la db
 mongoose.connect(
-    "mongodb://mhenriquez:123456@primer-app-docker:27017/miapp?authSource=admin"
+    "mongodb://mhenriquez:123456@mhcontainer:27017/dbapp?authSource=admin"
 );
 
 app.get("/", async (_req, res) => {
@@ -22,7 +22,7 @@ app.get("/", async (_req, res) => {
     return res.send(animales);
 });
 
-app.get("/crear", async (_req, res) => {
+app.get("/create", async (_req, res) => {
     console.log("creando...");
     await Animal.create({ tipo: "Chanchito", estado: "Feliz" });
     return res.send("ok");
